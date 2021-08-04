@@ -14,22 +14,39 @@
 
 - 컴퓨터 파일의 변경사항 추적 및 여러 사용자 간에 해당 파일 작업을 조율
 
+
+
 2. **분산버전관리시스템(DVCS)** 
 
    - *원격 저장소*를 통해 여러 작업자들이 협업하고 모든 히스토리를 클라이언트들이 공유
-
    - 나누어진 버전을 합치는 것도 합리적
+
+   
 
 3. 기본 흐름
 
    + **작업**  --  **add**하여 *Staging area*에 모아 -- **commit**으로 버전 기록
    + Git은 파일을 modified, staged
-   
-   
-   
-4. 파일 라이프사이클
 
+   
 
+4. Git 영역 구성
+
+   + **Working Directory** (Local)
+
+     : 개인 코드 작성
+
+   + **Staging 영역**
+
+     : git add를 통해 수정된 코드를 올림
+
+   + **Repository**
+
+     : git commit을 통해 최종 수정본을 제출
+
+     
+
+5. 파일 라이프사이클
 
 <img src="C:\Users\jjyju\AppData\Roaming\Typora\typora-user-images\image-20210804160742388.png" alt="라이프사이클" style="zoom: 50%;" />
 
@@ -58,7 +75,7 @@
   1.txt
   ```
 
-+ touch : 파일 만들기
++ **touch** : 파일 만들기
 
   ``` bash
   $ touch <파일명>
@@ -90,14 +107,14 @@
 
 ***
 
-+ git init : git 저장소를 만듬
++ **git init** : git 저장소를 만듬
 
   ```bash
   $ git init
   Initialized empty Git repository in C:/Users/jjyju/OneDrive/바탕 화면/멀티캠퍼스/특강/Git,Github/실습1/.git/
   ```
 
-+ git add : working directory 상의 변경내용을 staging area에 추가
++ **git add** : working directory 상의 변경내용을 staging area에 추가
 
   > untracked, modified 상태 --> staged
 
@@ -106,7 +123,7 @@
   $ git add a.txt
   ```
 
-+ git commit : staged 상태의 파일들을 commit을 통해 버전으로 기록함
++ **git commit** : staged 상태의 파일들을 commit을 통해 버전으로 기록함
 
   ```bash
   $ git commit -m '커밋메세지'
@@ -114,10 +131,9 @@
   [master (root-commit) 04c1918] a.txt
    1 file changed, 0 insertions(+), 0 deletions(-)
    create mode 100644 a.txt
-  
   ```
 
-+ git status : git 저장소에 있는 파일의 상태 확인
++ **git status** : git 저장소에 있는 파일의 상태 확인
 
   ```bash
   $ git status
@@ -133,7 +149,7 @@
   
   ```
 
-+ git log : 현재 저장소에 기록된 커밋을 조회
++ **git log** : 현재 저장소에 기록된 커밋을 조회
 
   ```bash
   $ git log -1
@@ -181,7 +197,7 @@
   ```
 
 
-+ push : 원격저장소로 로컬저장소 변경사항(commit)을 올림(push) 
++ **push** : 원격저장소로 로컬저장소 변경사항(commit)을 올림(push) 
 
   ```bash
   $ git push <원격저장소 이름> <브랜치 이름>
