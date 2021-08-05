@@ -219,4 +219,8 @@
   $ git pull <원격저장소 이름> <브랜치 이름>
   ```
 
-  
++ git remote add origin
+
++ git remote rm origin
+
++ git push origin master
