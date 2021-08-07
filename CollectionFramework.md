@@ -1,0 +1,218 @@
+# Collection Framework
+
+여러 객체를 저장하는 자바변수는 보통 *배열* 을 사용한다.
+
+그러나, 배열은 
+
+1) 동일타입 (형변환 가능)만 저장할 수 있다는 한계
+2) 배열은 크기가 변하지 않는다
+
+따라서, 배열 말고 자바에서 제공하는 java.util 패키지에 컬렉션과 관련된 인터페이스, 클래스들이 있다.
+
+| java.util.List 인터페이스<br />(다중상속, 메소드구현x)<br />void add(Object o); | java.util.Set 인터페이스                                     | java.util.Map 인터페이스                                     |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| class xxxList implements List{<br />void add (Object o){...}<br />} | class xxxSet implements Set{<br />void add (Object o){...}<br />} | class xxxMap implements Map{<br />void put (Object o){...}<br />} |
+| **ArratList**, LinkedList, Vector, Stack                     | **HashSet**, TreeSet....                                     | **HashMap**, Hashtable                                       |
+| 서로 다른타입데이터 저장가능<br />저장 데이터 갯수 동적 변경<br />데이터저장 순서유지=index<br />같은 데이터 2번이상 저장가능<br /> (학생점수저장) | 서로 다른타입데이터 저장가능<br />저장 데이터 갯수 동적 변경<br />데이터저장 순서유지x=index x<br />같은 데이터 2번이상 저장불가<br /> (로또번호6개저장) | 서로 다른타입데이터 저장가능<br />저장 데이터 갯수 동적 변경<br />데이터저장 순서유지x=index x<br />같은key 데이터 2번이상 저장불가<br /> 데이터(key+value)("name":"java) |
+
+***
+
+java.util.List 인터페이스를 상속받아 구현한 클래스들 = List 포한하는 메소드를 오버라이딩 해야함
+
+## List Collection _ ArrayList 
+
+```java 
+ArrayList list = new ArrayList(n);
+```
+
+> 1. 자바의 객체이기만 하면 자바의 모든 타입 저장 가능하다.
+>
+> 2. 최초의 n개 객체 저장 가능한 길이를 생성한다. + n개씩 추가 생성
+
+```java
+ArrayList list = new ArrayList(5,2);
+```
+
+> 1. 자바의 객체이기만 하면 자바의 모든 타입 저장 가능하다.
+> 2. 최초의 5개 객체 저장 가능한 길이를 생성한다. + 2개씩 추가 생성
+
+
+
++ 저장 메소드
+
+```java
+list.add(100)
+list.add(3.14)
+list.add(true)
+list.add(new A())
+list.add("java")
+```
+
++ 삭제 메소드
+
+```java
+list.remove(1) //리스크 안에 저장된 것 중 1번 인덱스(2번째 객체) 삭제
+```
+
++ 수정 메소드
+
+```java
+list.set(1,"aaa") //리스트 1번 인덱스 자리"aaa"로 교체
+```
+
++ 조회 메소드
+
+```java
+list.size() //저장된 데이터 갯수 조회 : int 타입(리턴타입)
+list.get(1) //특정 위치에 저장된 데이터 내용 조회 : Object -->"aaa"
+list.indexOf("java") //특정 데이터가 저장된 위치 조회 : int ---> 4번 인덱스
+list.contains("Java") //특정 데이터가 리스트 포함 여부 : boolean ---> false(대소문자 구분)
+```
+
+Object o = new XXXX(); -> 자바의 모든 객체 타입을 포함하려면 모두 Object타입
+
+```java
+list.add(Object o) ->매개변수 Object
+list.get(int) -> 리턴타입 Object
+Object 클래스 안에 toString() --> 패키지명.클래스명@16진수값
+```
+
++ **ArrayList list = new ArrayList(5);**
+
+  **=> 모든 타입 객체 저장 가능**
+
+  list.add(Object o);
+
+  Object <-- list.get(int);
+
+
+
++ **ArrayList<String> list = new ArrayList<String>(5);**
+
+  **=> <String>타입 객체만 저장 가능 (컴파일러에게 타입을 고정해서 알려주는 것. 동적 변경x)**
+
+  list.add(String o);
+
+  String <-- list.get(int)
+
++ **ArrayList<E> list = new ArrayList<E>(5);**
+
+  **=>E 클래스가 존재하는 것이 아니라 지정 클래스 사용 제한 **  
+
+***
+
+## Set Collection _ HashSet
+
+1. 데이터 저장 시 순서 무관
+
+2. 중복 데이터 저장 불가
+
+   ex) 성적처리 시 동점점수 저장 -> ArrayList
+
+   ​		로또 번호 6개 추출 -> HashSet
+
+3. 메소드
+
+   저장 : add(Object o)
+
+   수정 : set() --> List에서 수정 불가
+
+   제거 : remove(Object o)
+
+   조회 : size()
+
+```java
+HashSet set = new HashSet();
+set.add(1);
+set.add(2);
+set.add("aaa");
+set.remouve(1); // -> set.add(1) 삭제
+
+for(int i = 0; i < set.size; i++){
+    s.o.p(set.XXX(i)); 
+} // --> error : set은 index가 없음!(순서x)
+
+for(Object one : set){
+    s.o.p(one);
+}// --> 순서는 랜덤으로 알아서 1,2,aaa 출력
+
+
+HashSet<String> set = new HashSet<String>();
+
+```
+
+***
+
+## Map Collection _ HashMap
+
+--java.util.ArrayList
+
+| 0 인덱스 | 1인덱스 | 2인덱스 |
+| -------- | ------- | ------- |
+| 데이터1  | 데이터2 | 데이터3 |
+
+--java.util.HashSet
+
+| 데이터1<br /><br />             데이터4                                                                             데이터3<br />                                                   데이터2 |
+| ------------------------------------------------------------ |
+
+=> 데이터 = 값
+
+--java.util.Map
+
+| Title | Days | Score |
+| ----- | ---- | ----- |
+| 자바  | 30   | A     |
+
+=> 데이터=(key, 값)
+
++ key는 중복 불가능/ 데이터 값(value)은 중복 가능
+
+
+
+```java
+HashMap map = new HashMap(); => 객체생성
+//저장
+map.put("key명",데이터값)
+------
+map.put("Title","자바");
+map.put("Days",30);
+map.put("Score",'A');
+
+//수정
+map.put("key명",수정할 데이터값)
+------
+map.put("Title","SQL") => 기존에 key가 존재하면 수정, 없으면 새로 저장!
+    
+//삭제
+map.remove("key명");
+------
+map.remove("Title");
+
+//조회
+map.get("key 명")
+
+
+
+HashMap<String, Integer> map = new HashMap<String, Integer>();
+-> 데이터 => key명 = String, 데이터값 = Integer
+map.put("국어",100);
+map.put("영어",55);
+```
+
+ex) 이름=key | 배열=폰번호, 집, 사무실, 이메일 - value
+
+​	  김자영 - {"011-2345-6789" "02-789-0000" "031-2345-1111" jayoung@sam.com}
+
+​	  김사원 - {"011-6666-9999" "031-3456-1111"}
+
+​	  최상사 - {"010-2345-6789" "02-789-0000" "031-2345-1111"}
+
+***
+
+| List 계열                                                    | Set 계열                                             | Map계열                                                      |
+| ------------------------------------------------------------ | ---------------------------------------------------- | ------------------------------------------------------------ |
+| 인덱스(순서)<br />데이터 중복 저장 가능<br />1-100명 순서 대기 점수 저장 | 인덱스 없음<br />데이터 중복 불가<br />로또번호 추첨 | key와 value 값의 한 쌍<br />인덱스 없음<br />key 중복 불가, 값 중복 가능<br />특정 이름 학생 점수 저장 |
+
+***
+
