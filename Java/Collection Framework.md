@@ -9,11 +9,19 @@
 
 따라서, 배열 말고 자바에서 제공하는 java.util 패키지에 컬렉션과 관련된 인터페이스, 클래스들이 있다.
 
+이러한 것들을 컬렉션 프레임워크 클래스들이라고 부르는데, 아래의 특징을 지닌다
+
++ 여러개의 객체 저장 가능
++ 동일 타입이거나 서로다른 타입도 가능
++ 갯수는 정적이거나 동적일 수 있음
+
+
+
 | java.util.List 인터페이스<br />(다중상속, 메소드구현x)<br />void add(Object o); | java.util.Set 인터페이스                                     | java.util.Map 인터페이스                                     |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| class xxxList implements List{<br />void add (Object o){...}<br />} | class xxxSet implements Set{<br />void add (Object o){...}<br />} | class xxxMap implements Map{<br />void put (Object o){...}<br />} |
+| class xxxList **implements** List{<br />void **add** (Object o){...}<br />} | class xxxSet **implements** Set{<br />void **add** (Object o){...}<br />} | class xxxMap **implements** Map{<br />void **put** (Object o){...}<br />} |
 | **ArratList**, LinkedList, Vector, Stack                     | **HashSet**, TreeSet....                                     | **HashMap**, Hashtable                                       |
-| 서로 다른타입데이터 저장가능<br />저장 데이터 갯수 동적 변경<br />데이터저장 순서유지=index<br />같은 데이터 2번이상 저장가능<br /> (학생점수저장) | 서로 다른타입데이터 저장가능<br />저장 데이터 갯수 동적 변경<br />데이터저장 순서유지x=index x<br />같은 데이터 2번이상 저장불가<br /> (로또번호6개저장) | 서로 다른타입데이터 저장가능<br />저장 데이터 갯수 동적 변경<br />데이터저장 순서유지x=index x<br />같은key 데이터 2번이상 저장불가<br /> 데이터(key+value)("name":"java) |
+| 서로 다른타입데이터 저장가능<br />저장 데이터 **갯수 동적** 변경<br />데이터저장 순서 있음 (= index)<br />같은 데이터 여러번 저장가능<br /> (학생 점수 저장) | 서로 다른타입데이터 저장가능<br />저장 데이터 **갯수 동적** 변경<br />데이터 저장 순서 없음<br />같은 데이터 2번이상 저장불가<br /> =>2번째부터 무시<br /> (로또번호 6개 저장) | 서로 다른타입데이터 저장가능<br />저장 데이터 **갯수 동적** 변경<br />데이터저장 순서없음<br />같은key 데이터 2번이상 저장불가<br />=>2번째부터 수정<br />*데이터(key+value)("name":"java)* |
 
 ***
 
