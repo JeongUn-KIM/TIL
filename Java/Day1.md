@@ -102,10 +102,85 @@ int a = 30 ; // 변수 생성, 선언 + 초기화 (숫자값 저장)
 
 ## 연산자
 
-++ : x++ ++x
-% : 나머지연산자
-== : 동등비교연산자
-= : 대입연산자
-&& : and
-|| : or
-a?b c : 조건삼항
+1. 산술 연산자 
+
+   ```java
+   int num1 = 4, num2 = 3, num3 = 2;
+       
+   System.out.println(num1 + num2); // 7
+   System.out.println(num1 - num2); // 1
+   System.out.println(num1 * num2); // 12
+   System.out.println(num1 / num3); // 2
+   System.out.println(num1 % num2); // 1
+   ```
+
+2. 대입 연산자
+
+   ```java
+   int num1 = 7, num2 = 7, num3 = 7;
+   
+   num1 = num1 -3;
+   num2 -= 3;
+   num3 =- 3;
+   
+   System.out.println(num1); // 4
+   System.out.println(num2); // 4
+   System.out.println(num3); // -3 (num3에 -3을 대입한 사례)
+   ```
+
+3. 증감 연산자
+
+   ```java
+   int num1 = 7, num2 = 7;
+   int result1;
+   int result2;
+   
+   result1 = --num1 + 4;
+   result2 = num2-- + 4;
+   
+   System.out.println(result1); // 10
+   System.out.println(num1); // 6
+   System.out.println(result2); // 11 (연산이 끝나고 나서 변수의 값 감소)
+   System.out.println(num2); // 6
+   ```
+
+4. 비교 연산자
+
+   ```java
+   char c1 = '10';
+   char c2 = '20';
+   
+   System.out.println(c1 == c2); // false
+   System.out.println(c1 < c2); // true
+   System.out.println(c1 != c2); // true
+   ```
+
+5. 논리 연산자
+
+   ```java
+   char c1 = 'b', c2 = 'B';
+   boolean result1, result2;
+   
+   result1 = (c1 > 'a') && (c1 < 'z') ;
+   result2 = (c2 < 'A') || (c2 < 'Z') ;
+   
+   System.out.println(result1); // true
+   System.out.println(result2); // true
+   System.out.println(!result2); // false
+   ```
+
+6.  삼항 연산자
+
+   ```java
+   //조건식 ? 반환값1 : 반환값2
+   
+   int num1 = 5, num2 = 7;
+   int result;
+   
+    
+   result = (num1 - num2 > 0) ? num1 : num2;
+   System.out.println(result); // 두 정수 중 더 큰 수는 7
+   ```
+
+   
+
