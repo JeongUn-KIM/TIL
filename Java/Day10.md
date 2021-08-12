@@ -24,9 +24,9 @@ java.net.InetAddress 클래스 - ip
 
 2. 통신
 
-   | tcp 통신방식 (전화방식)                     | udp 통신방식 (우편방식)                               |
-   | ------------------------------------------- | ----------------------------------------------------- |
-   | java.net.ServerSocket<br />java.netS\.Sockt | java.net.DatagramSocket<br />java.net.DatatgramPacket |
+   | tcp 통신방식 (전화방식)                                   | udp 통신방식 (우편방식)                                      |
+   | --------------------------------------------------------- | ------------------------------------------------------------ |
+   | java.net.ServerSocket<br />java.netS\.Sockt<br />신뢰성 o | java.net.DatagramSocket<br />java.net.DatatgramPacket<br />대량 메세지 동시 발송 / 답변보장 x / 신뢰성 x |
 
    또는
 
@@ -97,4 +97,45 @@ java.net.InetAddress 클래스 - ip
 | ------------------------------------------------- | ------------------------------------------------------------ |
 | 키보드<br />아이디 : *multi*<br />암호 : *campus* | LoginServer.java<br />클라이언트가 입력하여 전송한 아이디와 암호를 받아 적합성을 검사한다.<br /><br />HashMap<String, String> users = <br />new HashMap<String, String> ();<br />users.put("multi", "campus");<br />users.put("java", "program");<br />users.put("oracle", "db");<br /><br />users 해당 아이디x => "회원가입부터 하세요" 클라이언트 출력<br />users 해당 아이디o 암호x => "암호를 확인하세요" 클라이언트 출력<br />users 해당 아이디o 암호o => "정상 로그인 사용자입니다" 클라이언트 출력<br /> |
 
-*
+
+
+***
+
+***
+
+# 데이터베이스 Database
+
+### 데이터베이스 형태
+
++ 네트워크 구조
++ 계층형 구조
++ 관계형 구조
+
+**ORACLE** = 관계형 데이터 베이스 구현 제품
+
+**SQL** = 관계형 데이터 베이스 언어
+
+***
+
+### Oracle 설치
+
++ 관리자 system 계정 암호 : system
+
+1) Run SQL command Line
+
+2. connect system/system (=connect 계정명/암호)
+
+3. system 계정 = 오라클 관리자 계정, 잘못 건드리면 db 삭제해야 할 수도 있음
+
+4. hr 계정 : 수업에 필요한 샘플 데이터 보유, 오라클 설치 시 포함됨, 잠금상태
+
+5. hr 계정 unlock 방법 : 
+
+   connect system/system
+
+   alter user hr identified by hr account unlock;
+
+6. select * from tab; = 접속계정 내부의 데이터 목록 출력 명령문
+
+***
+
